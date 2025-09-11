@@ -41,8 +41,19 @@ struct list_node *create_dll(struct list_node *head)
     }
     return head;
 }
-struct list_node insert_at_beg(struct list_node *head)
+struct list_node *insert_at_beg(struct list_node *head)
 {
+    int vali;
+    struct list_node *ptr, *newnode;
+    ptr = head;
+    printf("Enter the number to be added at beg");
+    scanf("%d", &vali);
+    newnode = (struct list_node *)malloc(sizeof(struct list_node));
+    newnode->data = vali;
+    newnode->next = head;
+
+    newnode->prev = NULL;
+    head = newnode;
 }
 
 void display()
@@ -59,5 +70,7 @@ void display()
 int main()
 {
     head = create_dll(head);
+    display();
+    head = insert_at_beg(head);
     display();
 }
